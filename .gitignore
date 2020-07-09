@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# Add in the desired files
+!.gitignore
+!polybar
+!/polybar/**
+!i3
+!/i3/**
+!picom
+!/picom/**
+!.zshrc
+!.zprofile
+!alacritty.yml
