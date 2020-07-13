@@ -12,3 +12,5 @@
 !.zshrc
 !.zprofile
 !alacritty.yml
+!builds
+!/builds/**

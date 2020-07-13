@@ -1,0 +1,54 @@
+# Maintainer:  Håvard Pettersson <mail@haavard.me>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Contributor: Thayer Williams <thayer@archlinux.org>
+# Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
+
+_pkgname=dmenu
+pkgname=$_pkgname-git
+pkgver=4.9.6.g9b38fda
+pkgrel=1
+pkgdesc="A generic menu for X"
+url="http://tools.suckless.org/dmenu/"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('sh' 'libxinerama' 'libxft')
+makedepends=('git')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(git://git.suckless.org/$_pkgname https://tools.suckless.org/dmenu/patches/center/dmenu-center-20200111-8cd37e1.diff https://tools.suckless.org/dmenu/patches/border/dmenu-borderoption-20200217-bf60a1e.diff)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags --long | sed 's/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  # to use a custom config.h, place it in the package directory
+  if [[ -f ${SRCDEST}/config.h ]]; then
+      cp "${SRCDEST}/config.h" .
+  fi
+}
+
+build(){
+  cd $_pkgname
+  make \
+    X11INC=/usr/include/X11 \
+    X11LIB=/usr/lib/X11
+}
+
+package() {
+  cd $_pkgname
+  #sed -i 's/config.def.h/config.h/g' ../dmenu-center-20200111-8cd37e1.diff
+  patch --forward --strip=1 < ../dmenu-center-20200111-8cd37e1.diff
+  patch --forward --strip=1 < ../dmenu-borderoption-20200217-bf60a1e.diff
+  cp config.def.h config.h
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+sha256sums=('SKIP'
+            '4fe3802dc2d73193b5ea0cd1c5813f61300fa1abb294a4dc3e178d006a60f274'
+            'db3b92e02edd3a5ae424b8bc3e203235fb168a0ab4ddece6175989e8102ffc39')
