@@ -18,13 +18,12 @@
 ;==========================================================
 
 [colors]
-background = #282828
-background-alt = #383838
-foreground = #e8e8e8
-foreground-alt = #d8d8d8
-primary = #ab4642
-secondary = #7cafc2
-alert = #dc9659
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
 
 [settings]
 throttle-output = 5
@@ -35,20 +34,21 @@ throttle-input-for = 30
 module-margin = 1
 separator =
 height = 32
-background = #282828
-foreground = #e8e8e8
+width = 100%
+background = ${colors.background}
+foreground = ${colors.foreground}
 line-size = 2
 line-color = #ab4642
 bottom = true
 
 modules-left = i3 
 modules-center = 
-modules-right = memory cpu battery wifi date
+modules-right = pulseaudio memory cpu battery wifi date
 
 tray-position = right
 tray-padding = 1
 tray-offset = 1
-tray-background = #282828
+tray-background = ${colors.background}
 
 cursor-click = pointer
 
@@ -56,13 +56,41 @@ font-0 = Source Code Pro:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=10:antialias=false;1
 font-2 = FontAwesome:style=Regular:pixelsize=10;1
 
+[module/pulseaudio]
+type = internal/pulseaudio
+interval = 1
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
 [module/i3]
 type = internal/i3
 index-sort = true
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-foreground= #ab4642
+label-focused-foreground= ${colors.primary}
 label-focused-padding = 2.2
 
 label-occupied = %name%
@@ -81,40 +109,41 @@ label-visible = %name%
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%!
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
+
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = 
-format-prefix-foreground = #a1b56c
+format-prefix-foreground = ${xrdb:color2}
 label = %percentage:2%%
-label-foreground = #a1b56c
+label-foreground = ${xrdb:color2}
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = #f7ca88
+format-prefix-foreground = ${xrdb:color1}
 label = %gb_used%/%gb_total%
-label-foreground = #f7ca88
+label-foreground = ${xrdb:color1}
 
 [module/wifi]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
 label-connected = %essid%
-label-connected-foreground = #7cafc2
+label-connected-foreground = ${xrdb:color4}
 
 format-connected = <label-connected>
 format-connected-prefix = " "
-format-connected-prefix-foreground = #7cafc2
+format-connected-prefix-foreground = ${xrdb:color4}
 
 label-disconnected = %ifname% disconnected
-label-disconnected-foreground = #7cafc2
-label-disconnected-background = #7cafc2
+label-disconnected-foreground = ${xrdb:color4}
+label-disconnected-background = ${xrdb:color4}
 
 format-disconnected = <label-disconnected>
 
@@ -128,7 +157,7 @@ time-alt =  %m/%d/%Y%
 format-prefix = 
 
 label = %date% %time%
-label-foreground = #ba8baf
+label-foreground = ${xrdb:color5}
 
 [module/battery]
 type = internal/battery
@@ -137,10 +166,10 @@ adapter = AC
 full-at = 98
 
 format-charging = <ramp-capacity> <label-charging>
-format-charging-foreground = #93c7c0
+format-charging-foreground = ${xrdb:color3}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = #93c7c0
+format-discharging-foreground = ${xrdb:color3}
 
 format-full-prefix = 
 

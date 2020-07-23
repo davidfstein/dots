@@ -15,8 +15,18 @@ compinit
 # ENV Vars
 XDG_CONFIG_HOME=~/.config
 
+# Pywal
+. ~/.cache/wal/colors.sh
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
+
 # Reverse History search
 bindkey '^R' history-incremental-search-backward
+
+# Misc Key Bindings
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D^H" backward-kill-word
 
 # Prompt
 PROMPT="[%F{green}%n%f@%F{blue}%m%f] %F{yellow}%2~%f "
@@ -25,6 +35,7 @@ PROMPT="[%F{green}%n%f@%F{blue}%m%f] %F{yellow}%2~%f "
 alias config="vim ~/.config/.zshrc"
 alias update="source ~/.config/.zshrc"
 alias ll="ls -l --color=auto"
+alias vi="vim"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -43,6 +54,4 @@ unset __conda_setup
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
