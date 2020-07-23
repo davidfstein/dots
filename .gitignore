@@ -14,3 +14,5 @@
 !alacritty.yml
 !builds
 !/builds/**
+!zathura
+!/zathura/**
