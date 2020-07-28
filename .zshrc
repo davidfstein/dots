@@ -6,7 +6,7 @@ setopt extendedglob
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/david/.zshrc'
+zstyle :compinstall filename '/home/david/.config/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -29,6 +29,16 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D^H" backward-kill-word
 
 # Prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' disable bzr cdv darcs mtn svk tla
+zstyle ':vcs_info:*' stagedstr '*'
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats '%c%u %b'
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
 PROMPT="[%F{green}%n%f@%F{blue}%m%f] %F{yellow}%2~%f "
 
 # Aliases
