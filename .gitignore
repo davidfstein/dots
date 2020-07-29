@@ -19,3 +19,5 @@
 !/zathura/**
 !spicetify
 !/spicetify/**
+!.bin
+!/.bin/**
