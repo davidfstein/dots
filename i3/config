@@ -12,8 +12,8 @@
 set $mod Mod4
 
 # Colors
-set_from_resource $background color0
-set_from_resource $foreground color4
+set_from_resource $background i3wm.color0
+set_from_resource $foreground i3wm.color4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -185,8 +185,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id $(which dunst)
 
 # class                 border        backgr.       text          indicator     child_border
-client.focused          #ae95c7 ${foreground} ${foreground} ${foreground} ${foreground}
-client.unfocused        #1c2023 ${background} ${background} ${background} #1c2023
+client.focused          ${foreground} ${foreground} ${foreground} ${foreground} ${foreground}
+client.unfocused        ${background} ${background} ${background} ${background} #1c2023
 
 ## My Stuff
 for_window [class=".*"] border pixel 0
