@@ -54,30 +54,20 @@ cr="${reset}"
 c0="${reset}${bold}"
 c1="${reset}${accent}"
 
+t0="$(tput setaf 0)"
+
 ## Output
 
 cat <<EOF
-${c0}${c1}       /\       ${c0}${white}    USER       ${c0}${violet}${user}${reset}
-${c0}${c1}      /  \      ${c0}${white}    DISTRO     ${c0}${red}${distro}${reset}
-${c0}${c1}     /    \     ${c0}${white}    KERNEL     ${c0}${yellow}${kernel}${reset}
-${c0}${c1}    /      \    ${c0}${white}    UPTIME     ${c0}${cyan}${uptime}${reset}
-${c0}${c1}   /   ,,   \   ${c0}${white}    WM         ${c0}${blue}${wm}${reset}
-${c0}${c1}  /   |  |  -\  ${c0}${white}    SHELL      ${c0}${green}${shell}${reset}
-${c0}${c1} /_-''    ''-_\ ${c0}${white}    PACKAGES   ${c0}${orange}${packages}${reset}
+${c0}${c1}       /\        ${c0}${white}    USER       ${c0}${violet}${user}${reset}
+${c0}${c1}      /  \       ${c0}${white}    DISTRO     ${c0}${red}${distro}${reset}
+${c0}${c1}     /    \      ${c0}${white}    KERNEL     ${c0}${yellow}${kernel}${reset}
+${c0}${c1}    /      \     ${c0}${white}    UPTIME     ${c0}${cyan}${uptime}${reset}
+${c0}${c1}   /   ,,   \    ${c0}${white}    WM         ${c0}${blue}${wm}${reset}
+${c0}${c1}  /   |  |   \   ${c0}${white}    SHELL      ${c0}${green}${shell}${reset}
+${c0}${c1} /   ,'  ',   \  ${c0}${white}    PACKAGES   ${c0}${orange}${packages}${reset}
+${c0}${c1}/__--      --__\ ${c0}${white}    TERMINAL   ${c0}${violet}${term}${reset}
+
+${t0}🔷${cr}${red}🔷${cr}${green}🔷${cr}${yellow}🔷${cr}${blue}🔷${cr}${violet}🔷${cr}${cyan}🔷${cr}${white}🔷${cr}
 EOF
 
-f=3 b=4
-for j in f b; do
-	for i in {0..7}; do
-		printf -v $j$i %b "\e[${!j}${i}m"
-	done
-done
-
-d=$'\e[1m'
-t=$'\e[0m'
-v=$'\e[7m'
-	
-	
-#pcs() { for i in {0..7}; do echo -en "\e[${1}$((30+$i))m\u2584 \e[0m"; done; }
-#printf "\n\t\t    %s\n" "$(pcs)"
-printf "\n"
