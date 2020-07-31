@@ -47,8 +47,6 @@ alias update="source ~/.config/.zshrc"
 alias ll="ls -l --color=auto"
 alias vi="vim"
 
-# Path
-export PATH="$PATH:/home/david/.config/.bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

@@ -21,3 +21,5 @@
 !/spicetify/**
 !.bin
 !/.bin/**
+!dunst
+!/dunst/**
