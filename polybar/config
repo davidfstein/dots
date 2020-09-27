@@ -86,10 +86,32 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
+pin-workspaces = false
+strip-wsnumbers = true
+enable-scroll = false
 index-sort = true
 
+ws-icon-default = ""
+ws-icon-0 = "0;0  "
+ws-icon-1 = "1;"
+ws-icon-2 = "2;"
+ws-icon-3 = "3;"
+ws-icon-4 = "4;"
+ws-icon-5 = "5;"
+ws-icon-6 = "6;6"
+ws-icon-7 = "7;7"
+ws-icon-8 = "8;8"
+ws-icon-9 = "9;"
+
+; 1 Terminal
+; 2 Browser
+; 3 Code
+; 4 Open Office
+; 5 Reading
+; 9 Slack
+
 ; focused = Active workspace on focused monitor
-label-focused = %name%
+label-focused = %icon%
 label-focused-foreground= ${colors.primary}
 label-focused-padding = 2.2
 
@@ -97,7 +119,7 @@ label-occupied = %name%
 label-occupied-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %name%
+label-unfocused = ${self.label-focused}
 label-unfocused-padding = ${self.label-focused-padding}
 
 label-empty = %name%
@@ -105,11 +127,11 @@ label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %name%
+label-visible = ${self.label-focused}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = ${self.label-focused}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
