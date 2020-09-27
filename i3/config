@@ -190,3 +190,12 @@ gaps outer 15
 
 bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
+
+## Assign applications to workspaces
+assign [class="Alacritty"] $ws1
+assign [class="firefoxdeveloperedition"] $ws2
+assign [class="code-oss"] $ws3
+assign [class="libreoffice"] $ws4
+assign [class="Zathura"] $ws5
+assign [class="Slack"] $ws9
+
