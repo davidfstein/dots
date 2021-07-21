@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source activate vip
+
+code=$(vipaccess show -f ~/.config/.vipaccess)
+
+notify-send "VIP Code" "${code} - copied to clipboard"
+
+echo -n "${code}" | xclip -se c

@@ -65,7 +65,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+ 
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
@@ -195,7 +195,23 @@ bindsym $mod+period workspace next
 assign [class="Alacritty"] $ws1
 assign [class="firefoxdeveloperedition"] $ws2
 assign [class="code-oss"] $ws3
+assign [class="RStudio"] $ws3
+assign [class="MATLAB R2020b - academic use"] $ws3
 assign [class="libreoffice"] $ws4
 assign [class="Zathura"] $ws5
+assign [class="zoom"] $ws7
 assign [class="Slack"] $ws9
 
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (h) HDMI ON, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym h exec --no-startup-id xrandr --output HDMI-1 --mode 1680x1050 --auto --right-of eDP-1, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+ }    
+ 
+bindsym $mod+x mode "$mode_display"
+bindsym $mod+m move workspace to output right
+bindsym $mod+n move workspace to output left

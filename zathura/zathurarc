@@ -85,7 +85,6 @@ set recolor-darkcolor "#c7ccd1" # Foreground
 set adjust-open width
 
 set recolor true
-set font "monospace normal 12"
 map <C-i> zoom in
 map <C-o> zoom out
 map <Left> navigate previous

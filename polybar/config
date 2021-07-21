@@ -31,6 +31,7 @@ throttle-output-for = 10
 throttle-input-for = 30
 
 [bar/mybar]
+monitor = ${env:MONITOR:eDP-1}
 module-margin = 1
 separator =
 height = 32
@@ -99,7 +100,7 @@ ws-icon-3 = "3;"
 ws-icon-4 = "4;"
 ws-icon-5 = "5;"
 ws-icon-6 = "6;6"
-ws-icon-7 = "7;7"
+ws-icon-7 = "7;"
 ws-icon-8 = "8;8"
 ws-icon-9 = "9;"
 
@@ -108,6 +109,7 @@ ws-icon-9 = "9;"
 ; 3 Code
 ; 4 Open Office
 ; 5 Reading
+; 7 Zoom
 ; 9 Slack
 
 ; focused = Active workspace on focused monitor

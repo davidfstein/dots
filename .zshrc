@@ -45,7 +45,7 @@ alias config="vim ~/.config/.zshrc"
 alias update="source ~/.config/.zshrc"
 alias ll="ls -l --color=auto"
 alias vi="vim"
-
+alias xclip="xclip -selection c"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
